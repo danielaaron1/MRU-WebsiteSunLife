@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mount Rushmore Unit - Sun Life Philippines</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <style>
+        :root {
+            --primary-color: #003946;
+            --secondary-color: #c7a14a;
+            --gold-light: #ffe8a3;
+            --gold-lighter: #fffcee;
+            --teal-light: rgba(0, 57, 70, 0.05);
+        }
+
+        body {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+
+        /* Enhanced Design Elements */
+        .section-header {
+            position: relative;
+            padding: 2rem 0;
+            overflow: hidden;
+        }
+
+        .section-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -20%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent, var(--teal-light));
+            clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+            z-index: -1;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            background: var(--teal-light);
+            border-radius: 50%;
+        }
+
+        .shape-1 {
+            width: 120px;
+            height: 120px;
+            top: -30px;
+            right: 10%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .shape-2 {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .achievement-item {
+            border-left: 3px solid var(--primary-color) !important;
+            position: relative;
+            background: linear-gradient(145deg, #fff, #f8f9fa);
+            transition: all 0.3s ease;
+        }
+
+        .achievement-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(199, 161, 74, 0.15);
+        }
+
+        .section-animate {
+            animation: fadeSlideUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeSlideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-accent {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: var(--primary-color);
+            opacity: 0.03;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            z-index: -1;
+        }
+
+        .btn-dark {
+            background-color: var(--primary-color) !important;
+            border-color: var(--primary-color) !important;
+        }
+
+        .btn:hover,
+        .btn:focus {
+            background-color: var(--secondary-color) !important;
+            border-color: var(--secondary-color) !important;
+            color: #fff !important;
+        }
+
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c7a149' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        .hero {
+            background: linear-gradient(120deg, #ffffff 0%, #f8f9fa 100%) !important;
+        }
+
+        .intro-section {
+            background: linear-gradient(to bottom, #f8f9fa, #ffffff) !important;
+            position: relative;
+            z-index: 1;
+        }
+
+        .intro-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23003946' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        .features-section {
+            background: linear-gradient(to bottom, #ffffff, #f8f9fa) !important;
+            position: relative;
+            z-index: 1;
+        }
+
+        .features-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c7a14a' fill-opacity='0.03' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.6;
+            z-index: -1;
+        }
+
+        .minimalist-hero {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(199, 161, 73, 0.2);
+        }
+
+        .hero-gold-bar {
+            width: 90px;
+            height: 7px;
+            background: linear-gradient(90deg, var(--secondary-color), #fffbe6, var(--secondary-color));
+            border-radius: 6px;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 2px 10px rgba(199, 161, 74, 0.3);
+        }
+
+        .icon-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold-lighter) 0%, var(--gold-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(199, 161, 74, 0.2);
+            border: 1px solid rgba(199, 161, 73, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+        }
+
+        .feature-card h3 {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .gold-accent {
+            display: inline-block;
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(to bottom, var(--secondary-color), var(--gold-light));
+            border-radius: 2px;
+        }
+
+        .nav-link {
+            position: relative;
+            color: var(--primary-color) !important;
+            font-weight: 500 !important;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--gold-light));
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover:after {
+            width: 80%;
+        }
+
+        .navbar-brand {
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.02);
+        }
+
+        .contact-icon-circle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold-lighter) 0%, var(--gold-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(199, 161, 74, 0.15);
+            border: 1px solid rgba(199, 161, 73, 0.1);
+        }
+
+        .social-icon-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold-lighter) 0%, var(--gold-light) 100%);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(199, 161, 74, 0.15);
+            border: 1px solid rgba(199, 161, 73, 0.1);
+            color: var(--secondary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .social-icon-circle:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(199, 161, 74, 0.25);
+        }
+
+        .gold-accent-small {
+            display: inline-block;
+            width: 3px;
+            height: 16px;
+            background: linear-gradient(to bottom, var(--secondary-color), var(--gold-light));
+            border-radius: 2px;
+        }
+
+        .hover-gold {
+            transition: color 0.3s ease;
+        }
+
+        .hover-gold:hover {
+            color: var(--secondary-color) !important;
+        }
+
+        .minimalist-footer h5 {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .about-content, .feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-content:hover, .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+
+        .btn-outline-dark {
+            color: var(--primary-color) !important;
+            border-color: var(--primary-color) !important;
+        }
+
+        .btn-outline-dark:hover {
+            background-color: var(--primary-color) !important;
+            color: white !important;
+        }
+
+        .color-block-teal {
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 60%;
+            height: 120%;
+            background-color: var(--primary-color);
+            opacity: 0.03;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            transform: rotate(-15deg);
+            z-index: 0;
+        }
+
+        .color-block-gold {
+            position: absolute;
+            bottom: -40%;
+            left: -10%;
+            width: 70%;
+            height: 120%;
+            background-color: var(--secondary-color);
+            opacity: 0.05;
+            border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%;
+            transform: rotate(15deg);
+            z-index: 0;
+        }
+
+        .image-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .image-backdrop {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 320px;
+            height: 320px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            opacity: 0.1;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .color-block-teal, .color-block-gold {
+                opacity: 0.03;
+            }
+            
+            .image-backdrop {
+                width: 290px;
+                height: 290px;
+                top: -10px;
+                left: -10px;
+            }
+        }
+    </style>
+</head>
+
+
+<body class="animated">
+    <nav class="navbar navbar-expand-lg minimalist-navbar bg-white shadow-sm sticky-top border-bottom" style="border-color: rgba(199, 161, 73, 0.2) !important;">
+        <div class="container">
+            <a class="navbar-brand fw-bold minimalist-title fs-3 d-flex align-items-center" href="index.html" style="color: #003946;">
+                <span class="gold-accent me-2"></span>MOUNT RUSHMORE UNIT
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav minimalist-nav mb-0">
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item ms-lg-2 mt-3 mt-lg-0">
+                        <button type="button" class="btn btn-dark rounded-pill px-4 fw-medium shadow-sm" onclick="openGoogleForm()">Join Us</button>
+                    </li>
+                </ul>
+            </div>
+        </div>  
+    </nav>
+
+    <section class="hero minimalist-hero fade-in section-animate py-5" style="position: relative; overflow: hidden; min-height: 520px;">
+        <div class="color-block-teal"></div>
+        <div class="color-block-gold"></div>
+        <div class="hero-pattern"></div>
+        <div class="container position-relative" style="z-index: 2;">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-14 mx-auto">
+                    <div class="d-flex align-items-center flex-column flex-lg-row gap-3">
+                        <div class="image-container position-relative">
+                            <div class="image-backdrop"></div>
+                            <img src="pictures/InfoWebsite.png" alt="Sun Life Logo" width="290" height="290" class="d-block rounded-circle shadow-lg flex-shrink-0 position-relative" style="background:#ffffff; object-fit:cover; border: 4px solid #ffffff; z-index: 2;">
+                        </div>
+                        <div class="text-center text-lg-start">
+                            <div class="hero-gold-bar mt-2 mb-3 mx-auto mx-lg-0"></div>
+                            <h1 class="unit-title minimalist-heading mb-2 fw-bold" style="font-size:3.5rem; color: var(--primary-color); letter-spacing:1px; font-family:'Poppins', Arial, sans-serif; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">
+                                MOUNT RUSHMORE UNIT
+                            </h1>
+                            <p class="unit-tagline minimalist-sub mb-3 fw-bold" style="font-size:1rem; letter-spacing: 2px; color: var(--secondary-color);">SEE YOU AT THE BRIGHTER SIDE!</p>
+                            <p class="mb-4 fs-6" style="max-width: 420px; color: #4a5568;">
+                                Join our award-winning team of Financial Advisors. Grow your career with us — part-time or full-time positions available. Shape a brighter future for yourself and others.
+                            </p>
+                            <button type="button" class="btn btn-dark btn-lg minimalist-cta px-5 shadow-sm" onclick="openGoogleForm()">Apply Now <i class="fas fa-arrow-right ms-2"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="intro-section minimalist-intro slide-up section-animate py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12 col-xl-12">
+                    <div class="about-content p-4 p-lg-5 bg-white rounded-4 shadow-sm" style="border: 1px solid rgba(199, 161, 73, 0.15);">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="border-start border-3 border-warning ps-3 me-3">
+                                <h1 class="section-title minimalist-heading mb-0" style="color: #003946;">About Us</h1>
+                            </div>
+                        </div>
+                        <p class="section-text minimalist-desc mb-4" style="font-size: 1.25rem; line-height: 1.8;">Mount Rushmore Unit was established in August 2020 under Unit Manager Timothy Sese. He started from scratch seeking 20 financial advisors. As of 2024, UM Timothy Sese has 20 financial advisors from different fields: Nurses, Business Owners, HR, Call Center Agents, Accountants, Teachers, and Seamen. Together, they strive to secure lives and help others live a brighter future.</p>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                            <button type="button" class="btn btn-outline-dark border-3 minimalist-link px-4 py-3 me-md-2" onclick="window.location.href='about.html'">See More <i class="fas fa-arrow-right ms-2"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section minimalist-features scale-in section-animate py-5">
+        <div class="container">
+            <h2 class="section-title minimalist-heading text-center mb-2" style="color: #003946;">Why Choose Us?</h2>
+            <div class="text-center mb-5">
+                <div class="hero-gold-bar mx-auto"></div>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-12 col-md-4">
+                    <div class="feature-card minimalist-feature p-4 h-100 text-center rounded-4 shadow-sm" style="background: linear-gradient(145deg, #ffffff 0%, #fffdf5 100%); border: 1px solid rgba(199, 161, 73, 0.15);">
+                        <div class="icon-circle mb-3 mx-auto">
+                            <i class="fas fa-users feature-icon minimalist-icon"></i>
+                        </div>
+                        <h3 class="h5">Personalized Approach</h3>
+                        <p class="feature-text minimalist-desc mb-0">We take the time to understand your unique financial goals, creating customized solutions that align with your life vision.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="feature-card minimalist-feature p-4 h-100 text-center rounded-4 shadow-sm" style="background: linear-gradient(145deg, #ffffff 0%, #fffdf5 100%); border: 1px solid rgba(199, 161, 73, 0.15);">
+                        <div class="icon-circle mb-3 mx-auto">
+                            <i class="fas fa-chart-line feature-icon minimalist-icon"></i>
+                        </div>
+                        <h3 class="h5">Certified Expertise</h3>
+                        <p class="feature-text minimalist-desc mb-0">Our team consists of licensed professionals with extensive training and certifications to provide sound financial guidance.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="feature-card minimalist-feature p-4 h-100 text-center rounded-4 shadow-sm" style="background: linear-gradient(145deg, #ffffff 0%, #fffdf5 100%); border: 1px solid rgba(199, 161, 73, 0.15);">
+                        <div class="icon-circle mb-3 mx-auto">
+                            <i class="fas fa-handshake feature-icon minimalist-icon"></i>
+                        </div>
+                        <h3 class="h5">Lifetime Partnership</h3>
+                        <p class="feature-text minimalist-desc mb-0">We're committed to a long-term relationship, continuously adapting our strategies as your life evolves.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="feature-card minimalist-feature p-4 h-100 text-center rounded-4 shadow-sm" style="background: linear-gradient(145deg, #ffffff 0%, #fffdf5 100%); border: 1px solid rgba(199, 161, 73, 0.15);">
+                        <div class="icon-circle mb-3 mx-auto">
+                            <i class="fas fa-handshake feature-icon minimalist-icon"></i>
+                        </div>
+                        <h3 class="h5">Enduring Collaboration</h3>
+                        <p class="feature-text minimalist-desc mb-0">We guide you every step of the way, making sure you fully understand the financial solutions we provide.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="footer minimalist-footer py-5 bg-white border-top" style="border-color: rgba(199, 161, 73, 0.2) !important;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-4">
+                        <h5 class="minimalist-heading mb-3">
+                            <span class="gold-accent-small me-2"></span>Contact Me:
+                        </h5>
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="contact-icon-circle me-3">
+                                <i class="fas fa-envelope text-muted"></i>
+                            </div>
+                            <a href="mailto:jantimothy.b.sese@sunlife.com.ph" class="text-dark text-decoration-none hover-gold">jantimothy.b.sese@sunlife.com.ph</a>
+                        </div>
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="contact-icon-circle me-3">
+                                <i class="fas fa-phone text-muted"></i>
+                            </div>
+                            <a href="tel:+639176289963" class="text-dark text-decoration-none hover-gold">09176289963</a>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="contact-icon-circle me-3">
+                                <i class="fas fa-map-marker-alt text-muted"></i>
+                            </div>
+                            <span class="text-muted">2F, Building E, Solenad 3, Sta. Rosa City, Laguna, Philippines</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="mb-4">
+                        <h5 class="minimalist-heading mb-3">
+                            <span class="gold-accent-small me-2"></span>Follow Us
+                        </h5>
+                        <div class="social-links">
+                            <a href="https://facebook.com/mountrushmoreunit" class="me-3 social-icon" target="_blank" rel="noopener noreferrer">
+                                <div class="social-icon-circle">
+                                    <i class="fab fa-facebook-f"></i>
+                                </div>
+                            </a>
+                            <a href="https://instagram.com/mountrushmoreunit" class="me-3 social-icon" target="_blank" rel="noopener noreferrer">
+                                <div class="social-icon-circle">
+                                    <i class="fab fa-instagram"></i>
+                                </div>
+                            </a>
+                            <a href="https://tiktok.com/@mountrushmoreunit" class="social-icon" target="_blank" rel="noopener noreferrer">
+                                <div class="social-icon-circle">
+                                    <i class="fab fa-tiktok"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top mt-4 pt-4" style="border-color: rgba(199, 161, 73, 0.2) !important;">
+                <div class="text-center">
+                    <span class="text-muted">&copy; 2025 Sun Life Philippines || Mount Rushmore Unit || All rights reserved</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+    .btn-dark {
+        background-color: var(--primary-color) !important;
+        border-color: var(--primary-color) !important;
+    }
+
+    .btn:hover,
+    .btn:focus {
+        background-color: var(--secondary-color) !important;
+        border-color: var(--secondary-color) !important;
+        color: #fff !important;
+    }
+
+    .hero-pattern {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c7a149' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        opacity: 0.8;
+        z-index: 1;
+    }
+
+    .hero {
+        background: linear-gradient(120deg, #ffffff 0%, #f8f9fa 100%) !important;
+    }
+
+    .intro-section {
+        background: linear-gradient(to bottom, #f8f9fa, #ffffff) !important;
+        position: relative;
+        z-index: 1;
+    }
+
+    .intro-section:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23003946' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E");
+        opacity: 0.5;
+        z-index: -1;
+    }
+
+    .features-section {
+        background: linear-gradient(to bottom, #ffffff, #f8f9fa) !important;
+        position: relative;
+        z-index: 1;
+    }
+
+    .features-section:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c7a14a' fill-opacity='0.03' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+        opacity: 0.6;
+        z-index: -1;
+    }
+
+    .minimalist-hero {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        border-bottom: 1px solid rgba(199, 161, 73, 0.2);
+    }
+
+    .hero-gold-bar {
+        width: 90px;
+        height: 7px;
+        background: linear-gradient(90deg, var(--secondary-color), #fffbe6, var(--secondary-color));
+        border-radius: 6px;
+        margin-bottom: 1.2rem;
+        box-shadow: 0 2px 10px rgba(199, 161, 74, 0.3);
+    }
+
+    .icon-circle {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--gold-lighter) 0%, var(--gold-light) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 8px rgba(199, 161, 74, 0.2);
+        border: 1px solid rgba(199, 161, 73, 0.15);
+    }
+
+    .feature-icon {
+        font-size: 1.8rem;
+        color: var(--secondary-color);
+    }
+
+    .feature-card h3 {
+        color: var(--primary-color);
+        font-weight: 600;
+    }
+
+    .gold-accent {
+        display: inline-block;
+        width: 4px;
+        height: 24px;
+        background: linear-gradient(to bottom, var(--secondary-color), var(--gold-light));
+        border-radius: 2px;
+    }
+
+    .nav-link {
+        position: relative;
+        color: var(--primary-color) !important;
+        font-weight: 500 !important;
+    }
+
+    .nav-link:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--secondary-color), var(--gold-light));
+        transition: width 0.3s;
+    }
+
+    .nav-link:hover:after {
+        width: 80%;
+    }
+
+    .navbar-brand {
+        transition: transform 0.3s ease;
+    }
+
+    .navbar-brand:hover {
+        transform: scale(1.02);
+    }
+
+    .contact-icon-circle {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--gold-lighter) 0%, var(--gold-light) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 6px rgba(199, 161, 74, 0.15);
+        border: 1px solid rgba(199, 161, 73, 0.1);
+    }
+
+    .social-icon-circle {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--gold-lighter) 0%, var(--gold-light) 100%);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 6px rgba(199, 161, 74, 0.15);
+        border: 1px solid rgba(199, 161, 73, 0.1);
+        color: var(--secondary-color);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .social-icon-circle:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 8px rgba(199, 161, 74, 0.25);
+    }
+
+    .gold-accent-small {
+        display: inline-block;
+        width: 3px;
+        height: 16px;
+        background: linear-gradient(to bottom, var(--secondary-color), var(--gold-light));
+        border-radius: 2px;
+    }
+
+    .hover-gold {
+        transition: color 0.3s ease;
+    }
+
+    .hover-gold:hover {
+        color: var(--secondary-color) !important;
+    }
+
+    .minimalist-footer h5 {
+        color: var(--primary-color);
+        font-weight: 600;
+    }
+
+    .about-content, .feature-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .about-content:hover, .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    .section-title {
+        position: relative;
+        display: inline-block;
+    }
+
+    .btn-outline-dark {
+        color: var(--primary-color) !important;
+        border-color: var(--primary-color) !important;
+    }
+
+    .btn-outline-dark:hover {
+        background-color: var(--primary-color) !important;
+        color: white !important;
+    }
+
+    .color-block-teal {
+        position: absolute;
+        top: -30%;
+        right: -10%;
+        width: 60%;
+        height: 120%;
+        background-color: var(--primary-color);
+        opacity: 0.03;
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        transform: rotate(-15deg);
+        z-index: 0;
+    }
+
+    .color-block-gold {
+        position: absolute;
+        bottom: -40%;
+        left: -10%;
+        width: 70%;
+        height: 120%;
+        background-color: var(--secondary-color);
+        opacity: 0.05;
+        border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%;
+        transform: rotate(15deg);
+        z-index: 0;
+    }
+
+    .image-container {
+        position: relative;
+        z-index: 2;
+    }
+
+    .image-backdrop {
+        position: absolute;
+        top: -15px;
+        left: -15px;
+        width: 320px;
+        height: 320px;
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        opacity: 0.1;
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+        .color-block-teal, .color-block-gold {
+            opacity: 0.03;
+        }
+        
+        .image-backdrop {
+            width: 290px;
+            height: 290px;
+            top: -10px;
+            left: -10px;
+        }
+    }
+    </style>
+
+    <script>
+    function openGoogleForm() {
+        window.open('https://docs.google.com/forms/d/e/1FAIpQLSd5lB_9Px5sSoXSuBNWr40VOh9XcQj4ED7ll6M9d8HkKwDQ2g/viewform', '_blank');
+    }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/animations.js"></script>
+</body>
+</html>
