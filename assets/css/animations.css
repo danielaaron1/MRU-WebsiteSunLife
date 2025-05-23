@@ -1,0 +1,58 @@
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 2s ease forwards;
+}
+.slide-up {
+  opacity: 0;
+  animation: slideUp 2s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.scale-in {
+  opacity: 0;
+  animation: scaleIn 1s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.animated {
+  will-change: opacity, transform;
+}
+
+/* Animate on hover for cards and buttons */
+.card, .feature-card, .minimalist-feature {
+  transition: box-shadow 0.5s, transform 0.5s, opacity 0.5s;
+}
+.card:hover, .feature-card:hover, .minimalist-feature:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 8px 28px rgba(199,161,74,0.15);
+}
+.btn, .minimalist-cta, .minimalist-link {
+  transition: background 0.5s, color 0.5s, transform 0.4s;
+}
+.btn:hover, .minimalist-cta:hover, .minimalist-link:hover {
+  transform: scale(1.09);
+}
+
+.navbar, .minimalist-navbar {
+  transition: box-shadow 0.5s, background 0.5;
+}
+
+/* Section animation utility */
+.section-animate {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s, transform 1s;
+}
+.section-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
